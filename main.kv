@@ -1,0 +1,174 @@
+WindowManager:
+    HomeWindow:
+    LoginWindow:
+    SignupWindow:
+    DashBoardWindow:
+    CookWindow:
+    CateringServicesWindow:
+
+
+<HomeWindow>:
+    name: "home"
+
+    GridLayout:
+        cols: 1
+        Button:
+            text: "Login"
+            on_press: root.home()
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Sign Up"
+            on_press: root.home()
+            on_release:
+                app.root.current = "signup"
+                root.manager.transition.direction = "left"
+
+
+<LoginWindow>:
+    name: "login"
+
+    usr_ref: usr_ref
+    pwd_ref: pwd_ref
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Username"
+            TextInput:
+                id: usr_ref
+                multiline: False
+
+            Label:
+                text: "Password"
+            TextInput:
+                id: pwd_ref
+                password: True
+                multiline: False
+
+        Button:
+            text: "Sign In"
+            on_press: root.login()
+            on_release:
+                app.root.current = "dashboard"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "right"
+
+
+<SignupWindow>:
+    name: "signup"
+
+    name_ref: name_ref
+    age_ref: age_ref
+    usr_ref: usr_ref
+    pwd_ref: pwd_ref
+
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols:2
+            Label:
+                text: "Name"
+            TextInput:
+                id: name_ref
+                multiline: False
+
+            Label:
+                text: "Age"
+            TextInput:
+                id: age_ref
+                multiline: False
+            Label:
+                text: "Username"
+            TextInput:
+                id: usr_ref
+                multiline: False
+
+            Label:
+                text: "Password"
+            TextInput:
+                id: pwd_ref
+                password: True
+                multiline: False
+
+        Button:
+            text: "Sign Up"
+            on_press: root.signup()
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "right"
+
+
+<DashBoardWindow>:
+    name: "dashboard"
+    GridLayout:
+        cols: 1
+        Button:
+            text: "Cooks"
+            on_release:
+                app.root.current = "cook"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Catering Services"
+            on_release:
+                app.root.current = "cateringServices"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Logout"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+
+
+<CookWindow>:
+    name: "cook"
+
+    GridLayout:
+        cols: 1
+
+        Label:
+            text: "Cooks"
+
+        Button:
+            text: "Hire"
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "dashboard"
+                root.manager.transition.direction = "right"
+
+
+<CateringServicesWindow>:
+    name: "cateringServices"
+    GridLayout:
+        cols: 1
+
+        Label:
+            text: "Catering Services"
+
+        Button:
+            text: "Hire"
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "dashboard"
+                root.manager.transition.direction = "right"
